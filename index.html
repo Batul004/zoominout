@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    #image-container {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    #zoom-buttons {
+      position: center;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    button {
+      margin-bottom: 5px;
+      padding: 8px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div id="image-container">
+    <img id="zoom-image" src="https://cdn.pixabay.com/photo/2023/12/28/19/14/boy-8474750_640.jpg" alt="Zoomable Image">
+</div>
+    <div id="zoom-buttons" >
+      <button onclick="zoomIn()">+</button>
+      <button onclick="zoomOut()">-</button>
+    </div>
+
+  <script>
+    let currentZoom = 1;
+
+    function zoomIn() {
+      currentZoom += 0.1;
+      updateZoom();
+    }
+
+    function zoomOut() {
+      if (currentZoom > 0.2) {
+        currentZoom -= 0.1;
+        updateZoom();
+      }
+    }
+
+    function updateZoom() {
+      document.getElementById('zoom-image').style.transform = `scale(${currentZoom})`;
+    }
+  </script>
+</body>
+</html>
+
+
